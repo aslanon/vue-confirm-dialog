@@ -10,8 +10,8 @@ const optionsDefaults = {
       isConfirmed: false,
       isLoading: false,
       message: "Message",
-      show: false,
-      auth: false,
+      isShow: false,
+      isAuth: false,
       button: {
         no: "No",
         yes: "Yes"
@@ -22,7 +22,7 @@ const optionsDefaults = {
       this.state = {
         isConfirmed: false,
         isLoading: false,
-        show: false,
+        isShow: false,
         time: 0
       };
     },
@@ -42,10 +42,10 @@ const optionsDefaults = {
     },
 
     async confirm(args, callback) {
-      this.state.show = true;
+      this.state.isShow = true;
       if (args && args.message) this.state.message = args.message;
       if (args && args.button) this.state.button = args.button;
-      if (args && args.auth) this.state.auth = true;
+      if (args && args.isAuth) this.state.isAuth = true;
       await this.callback().then(resp => {
         if (callback) callback(resp);
       });

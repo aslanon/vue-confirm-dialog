@@ -1,7 +1,7 @@
 <template>
   <vue-confirm-dialog
-    :isShow="state.show"
-    :isAuth="state.auth"
+    :isShow="state.isShow"
+    :isAuth="state.isAuth"
     :isLoading="state.isLoading"
     :message="state.message"
     :button="state.button"
