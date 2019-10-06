@@ -1,7 +1,6 @@
 import Vue from "vue";
 
 import ConfirmTemplate from "./confirm-template";
-import VueConfirmDialog from "./vue-confirm-dialog.vue";
 
 const optionsDefaults = {
   data: {
@@ -79,8 +78,6 @@ export default {
       data: { state: options.data.state },
       render: createElement => createElement(ConfirmTemplate)
     });
-
-    Vue.component("vue-confim-dialog", VueConfirmDialog);
 
     // Mount root Vue instance on new div element added to body
     root.$mount(document.body.appendChild(document.createElement("div")));
