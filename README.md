@@ -8,7 +8,9 @@
 
 ------
 
-![vue-confirm](/home/onur/vue-confirm.gif)
+Demo: https://aslanon.github.io/vue-confirm-dialog/
+
+![vue-confirm](https://media.giphy.com/media/f3jQgw3rTeoFjWIjnr/source.gif)
 
 
 
