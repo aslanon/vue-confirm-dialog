@@ -1,7 +1,7 @@
 {
-  "name": "vue-confirm",
+  "name": "vue-confirm-dialog",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -45,5 +45,24 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aslanon/vue-confirm.git"
+  },
+  "keywords": [
+    "vue",
+    "confirm",
+    "dialog",
+    "popup",
+    "plugin"
+  ],
+  "author": "Onur Aslan <aslanon.tr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aslanon/vue-confirm/issues"
+  },
+  "homepage": "https://github.com/aslanon/vue-confirm#readme"
 }

@@ -1,22 +1,22 @@
 <template>
-  <vue-confirm
+  <vue-confirm-dialog
     :isShow="state.show"
     :isAuth="state.auth"
     :isLoading="state.isLoading"
     :message="state.message"
     :button="state.button"
-  ></vue-confirm>
+  ></vue-confirm-dialog>
 </template>
 
 <script>
-import VueConfirm from './VueConfirm'
+import VueConfirmDialog from "./VueConfirmDialog";
 
 export default {
-  components: { VueConfirm },
+  components: { VueConfirmDialog },
   computed: {
     state() {
-      return this.$root.state
+      return this.$root.state;
     }
   }
-}
+};
 </script>
