@@ -1,8 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
-import VueConfirm from "./plugins/VueConfirmDialog";
+import VueConfirmDialog from "./plugins/vue-confirm-dialog";
 
-Vue.use(VueConfirm);
+Vue.use(VueConfirmDialog);
 
 Vue.config.productionTip = false;
 

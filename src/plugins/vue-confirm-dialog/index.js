@@ -1,16 +1,14 @@
 import Vue from "vue";
 
-import ConfirmRootContainer from "./ConfirmRootContainer";
+import ConfirmTemplate from "./confirm-template";
 
 const optionsDefaults = {
   data: {
-    // Hash object of all elements that can be commented on
     state: {
       time: 0,
       interval: null,
       isConfirmed: false,
       isLoading: false,
-      type: "select",
       message: "Message",
       show: false,
       auth: false,
@@ -75,23 +73,22 @@ const optionsDefaults = {
 export default {
   install(vue, opts) {
     const options = { ...optionsDefaults, ...opts };
-    // Fun will happen here
 
     const root = new Vue({
       data: { state: options.data.state },
-      render: createElement => createElement(ConfirmRootContainer)
+      render: createElement => createElement(ConfirmTemplate)
     });
 
     // Mount root Vue instance on new div element added to body
     root.$mount(document.body.appendChild(document.createElement("div")));
     root.callback = options.data.callback;
-
     root.isConfirm = options.data.isConfirm;
     root.resetState = options.data.resetState;
     root.confirm = options.data.confirm;
     root.close = options.data.close;
     root.$on("close", options.data.close);
     root.$on("save", options.data.updateConfirm);
+
     // Make the root instance available in all components
     vue.prototype.$vueConfirm = root;
   }

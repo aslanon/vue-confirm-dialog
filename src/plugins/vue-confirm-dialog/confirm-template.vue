@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import VueConfirmDialog from "./VueConfirmDialog";
+import VueConfirmDialog from "./vue-confirm-dialog";
 
 export default {
   components: { VueConfirmDialog },
