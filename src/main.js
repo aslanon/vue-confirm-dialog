@@ -1,6 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
-import VueConfirmDialog from "./plugins/vue-confirm-dialog";
+import VueConfirmDialog from ".";
 
 Vue.use(VueConfirmDialog);
 
