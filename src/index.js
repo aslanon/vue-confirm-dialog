@@ -1,6 +1,7 @@
 import Vue from "vue";
 
 import ConfirmTemplate from "./confirm-template";
+import VueConfirmDialog from "./vue-confirm-dialog.vue";
 
 const optionsDefaults = {
   data: {
@@ -73,6 +74,8 @@ const optionsDefaults = {
 export default {
   install(vue, opts) {
     const options = { ...optionsDefaults, ...opts };
+
+    Vue.component("vue-confim-dialog", VueConfirmDialog);
 
     const root = new Vue({
       data: { state: options.data.state },
