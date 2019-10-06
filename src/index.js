@@ -75,7 +75,7 @@ export default {
   install(vue, opts) {
     const options = { ...optionsDefaults, ...opts };
 
-    Vue.component("vue-confim-dialog", VueConfirmDialog);
+    Vue.component("vue-confirm-dialog", VueConfirmDialog);
 
     const root = new Vue({
       data: { state: options.data.state },
