@@ -1,30 +1,19 @@
 <template>
   <transition name="fade">
-    <div v-show="isShow" class="vc-overlay">
+    <div v-show="isShow" class="vc-overlay" id="vueConfirm">
       <transition name="zoom">
         <div v-if="isShow" ref="vueConfirm" class="vc-container">
           <p>{{message}}</p>
-
           <span v-if="isAuth" style="padding: 1rem; padding-top:0">
             <input
-              style="position:absolute;left: 0;top:0;width:0;padding:0;opacity:0"
-              name="confirm-password"
-              type="search"
-            />
-            <input
               v-focus
-              class="input-type-text --fill-gray"
-              size="14"
-              max-width="full"
-              radius="8"
-              height="35"
-              name="confirm-password"
-              placeholder="******"
+              class="vc-input"
+              name="vc-password"
+              placeholder="Password"
               type="password"
               v-model="password"
             />
           </span>
-
           <div class="vc-btn-gridd">
             <button
               :disabled="isLoading  || isConfirmLoading"
@@ -91,11 +80,16 @@ export default {
         if (el !== target && !el.contains(target)) {
           this._emit("close");
         }
-      } catch (error) {}
+      } catch (error) {
+        // console.log(error)
+      }
     },
 
     saveChanges() {
-      if (!this.isAuth) this._emit("save", true);
+      if (this.isAuth && this.password)
+        this._emit("setPassword", this.password);
+      this._emit("save", true);
+      this.password = null;
     }
   },
 
@@ -123,6 +117,18 @@ export default {
   /* -webkit-font-smoothing: antialiased; */
   -moz-osx-font-smoothing: grayscale;
 }
+p {
+  color: black;
+  padding: 1rem;
+  width: 100%;
+  font-weight: 700;
+  text-align: center;
+  font-size: 16px;
+  line-height: initial;
+}
+.border-top {
+  border-top: 1px solid rgb(224, 224, 224);
+}
 .vc-overlay {
   background: rgba(0, 0, 0, 0.29);
   width: 100%;
@@ -146,15 +152,7 @@ export default {
   grid-template-rows: 1fr auto;
   box-shadow: rgba(0, 0, 0, 0.29) 0px 3px 8px 0px;
 }
-p {
-  color: black;
-  padding: 1rem;
-  width: 100%;
-  font-weight: 700;
-  text-align: center;
-  font-size: 16px;
-  line-height: initial;
-}
+
 .vc-btn-gridd {
   width: 100%;
   display: grid;
@@ -185,9 +183,21 @@ p {
 .vc-btn.left {
   border-radius: 0;
   /* color: black; */
-  border-right: 1px solid rgb(224, 224, 224);
+  border-right: 1px solid #e0e0e0;
 }
-.border-top {
-  border-top: 1px solid rgb(224, 224, 224);
+.vc-input[type="password"] {
+  width: 100%;
+  outline: none;
+  border-radius: 8px;
+  height: 35px;
+  border: 0;
+  background-color: #ebebeb;
+  padding: 0 0.5rem;
+  font-size: 16px;
+  transition: 0.21s ease;
+}
+.vc-input[type="password"]:hover,
+.vc-input[type="password"]:focus {
+  background-color: #dfdfdf;
 }
 </style>

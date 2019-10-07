@@ -6,17 +6,61 @@ import VueConfirmDialog from "./vue-confirm-dialog.vue";
 const optionsDefaults = {
   data: {
     state: {
-      time: 0,
-      interval: null,
+      isShow: false,
       isConfirmed: false,
       isLoading: false,
+      time: 0,
+      interval: null,
+      password: null
+    },
+
+    dialog: {
+      auth: false,
       message: "Message",
-      isShow: false,
-      isAuth: false,
       button: {
         no: "No",
         yes: "Yes"
       }
+    },
+
+    /**
+     * Set vue-confirm state from JS props.
+     *
+     * @param {Object} args
+     * @param {Function} callback
+     */
+    async confirm(args, callback) {
+      this.state.isShow = true;
+      Object.keys(args).forEach(item => {
+        args[item] || this.dialog[item]
+          ? (this.dialog[item] = args[item])
+          : null;
+      });
+      await this.callback().then(resp => {
+        if (callback) callback(resp, this.state.password);
+      });
+    },
+
+    /**
+     * When user click to confirm button,
+     * this action resolved in callback function
+     * and action passing to confirm function
+     */
+    async callback() {
+      return new Promise(resolve => {
+        this.state.interval = setInterval(() => {
+          this.state.time += 1;
+          if (this.state.isConfirmed) {
+            resolve(true);
+            clearInterval(this.state.interval);
+          }
+          if (this.state.time > 120) {
+            clearInterval(this.state.interval);
+            resolve(false);
+            this.close();
+          }
+        }, 500);
+      });
     },
 
     resetState() {
@@ -24,7 +68,8 @@ const optionsDefaults = {
         isConfirmed: false,
         isLoading: false,
         isShow: false,
-        time: 0
+        time: 0,
+        password: null
       };
     },
 
@@ -42,31 +87,8 @@ const optionsDefaults = {
       return this.state.isConfirmed;
     },
 
-    async confirm(args, callback) {
-      this.state.isShow = true;
-      if (args && args.message) this.state.message = args.message;
-      if (args && args.button) this.state.button = args.button;
-      if (args && args.isAuth) this.state.isAuth = true;
-      await this.callback().then(resp => {
-        if (callback) callback(resp);
-      });
-    },
-
-    async callback() {
-      return new Promise((resolve, reject) => {
-        this.state.interval = setInterval(() => {
-          this.state.time += 1;
-          if (this.state.isConfirmed) {
-            resolve(this.state.isConfirmed);
-            clearInterval(this.state.interval);
-          }
-          if (this.state.time > 120) {
-            clearInterval(this.state.interval);
-            resolve(false);
-            this.close();
-          }
-        }, 500);
-      });
+    setPassword(password) {
+      if (password) this.state.password = password;
     }
   }
 };
@@ -77,8 +99,14 @@ export default {
 
     Vue.component("vue-confirm-dialog", VueConfirmDialog);
 
+    Vue.directive("focus", {
+      inserted: function(el) {
+        el.focus();
+      }
+    });
+
     const root = new Vue({
-      data: { state: options.data.state },
+      data: { state: options.data.state, dialog: options.data.dialog },
       render: createElement => createElement(ConfirmTemplate)
     });
 
@@ -89,6 +117,7 @@ export default {
     root.resetState = options.data.resetState;
     root.confirm = options.data.confirm;
     root.close = options.data.close;
+    root.$on("setPassword", options.data.setPassword);
     root.$on("close", options.data.close);
     root.$on("save", options.data.updateConfirm);
 

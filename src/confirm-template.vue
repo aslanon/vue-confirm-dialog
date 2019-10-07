@@ -1,10 +1,10 @@
 <template>
   <vue-confirm-dialog
     :isShow="state.isShow"
-    :isAuth="state.isAuth"
     :isLoading="state.isLoading"
-    :message="state.message"
-    :button="state.button"
+    :isAuth="dialog.auth"
+    :message="dialog.message"
+    :button="dialog.button"
   ></vue-confirm-dialog>
 </template>
 
@@ -16,6 +16,9 @@ export default {
   computed: {
     state() {
       return this.$root.state;
+    },
+    dialog() {
+      return this.$root.dialog;
     }
   }
 };
