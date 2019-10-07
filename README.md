@@ -1,6 +1,6 @@
 
 
-[![issues](https://badgen.net/github/issues/aslanon/vue-confirm-dialog)](https://badge.fury.io/js/vue-confirm-dialog)[![npm](https://img.shields.io/npm/dm/vue-confirm-dialog.svg)](https://www.npmjs.com/package/vue-confirm-dialog)![npm version](https://badge.fury.io/js/vue-confirm-dialog.svg)
+[![issues](https://badgen.net/github/issues/aslanon/vue-confirm-dialog)](https://badge.fury.io/js/vue-confirm-dialog)  [![npm](https://img.shields.io/npm/dm/vue-confirm-dialog.svg)](https://www.npmjs.com/package/vue-confirm-dialog)  ![npm version](https://badge.fury.io/js/vue-confirm-dialog.svg)
 
 
 
