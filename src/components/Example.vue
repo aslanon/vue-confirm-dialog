@@ -29,13 +29,16 @@ export default {
       this.$vueConfirm.confirm(
         {
           message: `Are you sure? ${item.text} will be remove?`,
+          auth: true, // with password confirm
           button: {
             no: "No",
             yes: "Yes"
           }
         },
-        function(confirm) {
+        function(confirm, password) {
           if (confirm == true) {
+            // password controller
+            // or another controller
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
                 self.list.splice(i, 1);
