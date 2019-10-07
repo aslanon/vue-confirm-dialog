@@ -1,43 +1,47 @@
 <template>
-  <div v-if="isShow" class="vue-confirm-dialog-overlay">
-    <div ref="vueConfirm" class="vue-confirm-dialog-container">
-      <p>{{message}}</p>
+  <transition name="fade">
+    <div v-show="isShow" class="vc-overlay">
+      <transition name="zoom">
+        <div v-if="isShow" ref="vueConfirm" class="vc-container">
+          <p>{{message}}</p>
 
-      <span v-if="isAuth" style="padding: 1rem; padding-top:0">
-        <input
-          style="position:absolute;left: 0;top:0;width:0;padding:0;opacity:0"
-          name="confirm-password"
-          type="search"
-        />
-        <input
-          v-focus
-          class="input-type-text --fill-gray"
-          size="14"
-          max-width="full"
-          radius="8"
-          height="35"
-          name="confirm-password"
-          placeholder="******"
-          type="password"
-          v-model="password"
-        />
-      </span>
+          <span v-if="isAuth" style="padding: 1rem; padding-top:0">
+            <input
+              style="position:absolute;left: 0;top:0;width:0;padding:0;opacity:0"
+              name="confirm-password"
+              type="search"
+            />
+            <input
+              v-focus
+              class="input-type-text --fill-gray"
+              size="14"
+              max-width="full"
+              radius="8"
+              height="35"
+              name="confirm-password"
+              placeholder="******"
+              type="password"
+              v-model="password"
+            />
+          </span>
 
-      <div class="vue-confirm-dialog-button-grid">
-        <button
-          :disabled="isLoading  || isConfirmLoading"
-          @click.stop="_emit('close')"
-          class="vue-confirm-dialog-button left"
-        >{{button.no}}</button>
+          <div class="vc-btn-gridd">
+            <button
+              :disabled="isLoading  || isConfirmLoading"
+              @click.stop="_emit('close')"
+              class="vc-btn left"
+            >{{button.no}}</button>
 
-        <button
-          :disabled="isLoading  || isConfirmLoading"
-          @click.stop="saveChanges()"
-          class="vue-confirm-dialog-button"
-        >{{button.yes}}</button>
-      </div>
+            <button
+              :disabled="isLoading  || isConfirmLoading"
+              @click.stop="saveChanges()"
+              class="vc-btn"
+            >{{button.yes}}</button>
+          </div>
+        </div>
+      </transition>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -106,6 +110,8 @@ export default {
 </script>
 
 <style scoped>
+@import url("./assets/transition.css");
+
 *,
 *:before,
 *:after {
@@ -117,7 +123,7 @@ export default {
   /* -webkit-font-smoothing: antialiased; */
   -moz-osx-font-smoothing: grayscale;
 }
-.vue-confirm-dialog-overlay {
+.vc-overlay {
   background: rgba(0, 0, 0, 0.29);
   width: 100%;
   height: 100%;
@@ -131,10 +137,10 @@ export default {
   align-items: center;
   align-content: baseline;
 }
-.vue-confirm-dialog-container {
+.vc-container {
   background: white;
   border-radius: 1rem;
-  width: 336px;
+  width: 286px;
   height: auto;
   display: grid;
   grid-template-rows: 1fr auto;
@@ -142,12 +148,14 @@ export default {
 }
 p {
   color: black;
-  padding: 2rem;
+  padding: 1rem;
   width: 100%;
   font-weight: 700;
   text-align: center;
+  font-size: 16px;
+  line-height: initial;
 }
-.vue-confirm-dialog-button-grid {
+.vc-btn-gridd {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -155,7 +163,7 @@ p {
   border-radius: 0 0 1rem 1rem;
   overflow: hidden;
 }
-.vue-confirm-dialog-button {
+.vc-btn {
   border-radius: 0 0 1rem 0;
   color: cornflowerblue;
   background: white;
@@ -165,18 +173,18 @@ p {
   font-weight: 700;
   outline: none;
 }
-.vue-confirm-dialog-button:hover {
+.vc-btn:hover {
   background: whitesmoke;
 }
-.vue-confirm-dialog-button:disabled {
+.vc-btn:disabled {
   background: whitesmoke;
 }
-.vue-confirm-dialog-button:active {
+.vc-btn:active {
   box-shadow: inset 0 2px 0px 0px #00000014;
 }
-.vue-confirm-dialog-button.left {
+.vc-btn.left {
   border-radius: 0;
-  color: black;
+  /* color: black; */
   border-right: 1px solid rgb(224, 224, 224);
 }
 .border-top {
