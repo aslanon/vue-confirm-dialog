@@ -6,7 +6,7 @@
 
 Demo: https://aslanon.github.io/vue-confirm-dialog/
 
-![vue-confirm](https://media.giphy.com/media/f3jQgw3rTeoFjWIjnr/source.gif)
+![vue-confirm](https://media.giphy.com/media/hrXI2FxOihZd072xwO/source.gif)
 
 ##### Install
 
