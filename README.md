@@ -1,18 +1,12 @@
-
-
-[![issues](https://badgen.net/github/issues/aslanon/vue-confirm-dialog)](https://badge.fury.io/js/vue-confirm-dialog)  [![npm](https://img.shields.io/npm/dm/vue-confirm-dialog.svg)](https://www.npmjs.com/package/vue-confirm-dialog)  ![npm version](https://badge.fury.io/js/vue-confirm-dialog.svg)
-
-
+[![issues](https://badgen.net/github/issues/aslanon/vue-confirm-dialog)](https://badge.fury.io/js/vue-confirm-dialog) [![npm](https://img.shields.io/npm/dm/vue-confirm-dialog.svg)](https://www.npmjs.com/package/vue-confirm-dialog) ![npm version](https://badge.fury.io/js/vue-confirm-dialog.svg)
 
 ### Vue.js Confirm Dialog
 
-------
+---
 
 Demo: https://aslanon.github.io/vue-confirm-dialog/
 
 ![vue-confirm](https://media.giphy.com/media/f3jQgw3rTeoFjWIjnr/source.gif)
-
-
 
 ##### Install
 
@@ -20,24 +14,22 @@ Demo: https://aslanon.github.io/vue-confirm-dialog/
 npm install --save vue-confirm-dialog
 ```
 
-
-
 ##### Quick Start Usage
 
 ```js
 // main.js
-import Vue from 'vue'
-import VueConfirmDialog from 'vue-confirm-dialog'
+import Vue from "vue";
+import VueConfirmDialog from "vue-confirm-dialog";
 
-Vue.use(VueConfirmDialog)
+Vue.use(VueConfirmDialog);
 ```
 
 ```vue
 <!-- your page layout -> e.g. default.vue -->
 <template>
-...
+  ...
   <vue-confirm-dialog></vue-confirm-dialog>
-...
+  ...
 </template>
 ```
 
@@ -73,8 +65,6 @@ export default {
 </script>
 ```
 
-
-
 ##### Example Component
 
 ```vue
@@ -83,7 +73,7 @@ export default {
     <ul>
       <li v-for="(item, i) in list" :key="item.id">
         <span class="item">
-          {{item.text}}
+          {{ item.text }}
           <button @click.stop="showConfirm(item)">Delete</button>
         </span>
       </li>
@@ -114,13 +104,20 @@ export default {
             yes: "Yes"
           }
         },
-        function(confirm) {
+        /**
+         * Callback
+         * @param {Boolean} confirm
+         * @param {String} password
+         */
+        function(confirm, password) {
           if (confirm == true) {
-            for (let i = 0; i < self.list.length; i++) {
-              if (self.list[i].id == item.id) {
-                self.list.splice(i, 1);
-                self.$vueConfirm.close();
-                break;
+            if (password == "USER_PASSWORD") {
+              for (let i = 0; i < self.list.length; i++) {
+                if (self.list[i].id == item.id) {
+                  self.list.splice(i, 1);
+                  self.$vueConfirm.close();
+                  break;
+                }
               }
             }
           }
@@ -156,4 +153,3 @@ li {
 }
 </style>
 ```
-

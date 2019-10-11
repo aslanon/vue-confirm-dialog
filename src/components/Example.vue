@@ -35,10 +35,13 @@ export default {
             yes: "Yes"
           }
         },
+        /**
+         * Callback
+         * @param {Boolean} confirm
+         * @param {String} password
+         */
         function(confirm, password) {
           if (confirm == true) {
-            // password controller
-            // or another controller
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
                 self.list.splice(i, 1);
