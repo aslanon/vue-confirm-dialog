@@ -4,8 +4,8 @@
       <transition name="zoom">
         <div v-if="isShow" ref="vueConfirm" class="vc-container">
           <span class="vc-text-grid">
-            <h4>{{title}}</h4>
-            <p>{{message}}</p>
+            <h4 class="vc-title">{{title}}</h4>
+            <p class="vc-text">{{message}}</p>
             <span v-if="isAuth">
               <input
                 v-focus
@@ -127,7 +127,7 @@ export default {
   margin: 0;
   padding: 0;
 }
-h4 {
+.vc-title {
   color: black;
   padding: 0 1rem;
   width: 100%;
@@ -137,7 +137,7 @@ h4 {
   line-height: initial;
   margin-bottom: 5px;
 }
-p {
+.vc-text {
   color: black;
   padding: 0 1rem;
   width: 100%;
@@ -218,6 +218,7 @@ p {
   border-radius: 8px;
   height: 35px;
   border: 0;
+  margin:5px 0;
   background-color: #ebebeb;
   padding: 0 0.5rem;
   font-size: 16px;
