@@ -28,8 +28,9 @@ export default {
       let self = this;
       this.$vueConfirm.confirm(
         {
+          title: "Confirm",
           message: `Are you sure? ${item.text} will be remove?`,
-          auth: true, // with password confirm
+          // auth: true, // with password confirm
           button: {
             no: "No",
             yes: "Yes"

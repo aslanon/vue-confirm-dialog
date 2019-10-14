@@ -3,6 +3,7 @@
     :isShow="state.isShow"
     :isLoading="state.isLoading"
     :isAuth="dialog.auth"
+    :title="dialog.title"
     :message="dialog.message"
     :button="dialog.button"
   ></vue-confirm-dialog>

@@ -3,26 +3,30 @@
     <div v-show="isShow" class="vc-overlay" id="vueConfirm">
       <transition name="zoom">
         <div v-if="isShow" ref="vueConfirm" class="vc-container">
-          <p>{{message}}</p>
-          <span v-if="isAuth" style="padding: 1rem; padding-top:0">
-            <input
-              v-focus
-              class="vc-input"
-              name="vc-password"
-              placeholder="Password"
-              type="password"
-              v-model="password"
-            />
+          <span class="vc-text-grid">
+            <h4>{{title}}</h4>
+            <p>{{message}}</p>
+            <span v-if="isAuth">
+              <input
+                v-focus
+                class="vc-input"
+                name="vc-password"
+                placeholder="Password"
+                type="password"
+                v-model="password"
+              />
+            </span>
           </span>
-          <div class="vc-btn-gridd">
+          <div class="vc-btn-grid" :class="{'isMono': !button.no || !button.yes}">
             <button
+              v-if="button.no"
               :disabled="isLoading  || isConfirmLoading"
               @click.stop="_emit('close')"
               class="vc-btn left"
             >{{button.no}}</button>
-
             <button
-              :disabled="isLoading  || isConfirmLoading"
+              v-if="button.yes"
+              :disabled="isLoading  || isConfirmLoading || isAuth ? !password : false"
               @click.stop="saveChanges()"
               class="vc-btn"
             >{{button.yes}}</button>
@@ -48,6 +52,10 @@ export default {
     isAuth: {
       type: Boolean,
       default: false
+    },
+    title: {
+      type: String,
+      default: "Confirm"
     },
     message: {
       type: String,
@@ -116,14 +124,26 @@ export default {
   -webkit-touch-callout: none;
   /* -webkit-font-smoothing: antialiased; */
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+h4 {
+  color: black;
+  padding: 0 1rem;
+  width: 100%;
+  font-weight: 900;
+  text-align: center;
+  font-size: 16px;
+  line-height: initial;
+  margin-bottom: 5px;
 }
 p {
   color: black;
-  padding: 1rem;
+  padding: 0 1rem;
   width: 100%;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   line-height: initial;
 }
 .border-top {
@@ -153,7 +173,10 @@ p {
   box-shadow: rgba(0, 0, 0, 0.29) 0px 3px 8px 0px;
 }
 
-.vc-btn-gridd {
+.vc-text-grid {
+  padding: 1rem;
+}
+.vc-btn-grid {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -161,11 +184,15 @@ p {
   border-radius: 0 0 1rem 1rem;
   overflow: hidden;
 }
+.vc-btn-grid.isMono {
+  grid-template-columns: 1fr;
+}
 .vc-btn {
   border-radius: 0 0 1rem 0;
   color: cornflowerblue;
   background: white;
   border: 0;
+  font-size: 1rem;
   border-top: 1px solid rgb(224, 224, 224);
   cursor: pointer;
   font-weight: 700;
