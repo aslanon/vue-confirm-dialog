@@ -128,23 +128,23 @@ export default {
   padding: 0;
 }
 .vc-title {
-  color: black;
-  padding: 0 1rem;
-  width: 100%;
-  font-weight: 900;
-  text-align: center;
-  font-size: 16px;
-  line-height: initial;
-  margin-bottom: 5px;
+  color: black !important;
+  padding: 0 1rem !important;
+  width: 100% !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+  font-size: 16px !important;
+  line-height: initial !important;
+  margin-bottom: 5px !important;
 }
 .vc-text {
-  color: black;
-  padding: 0 1rem;
-  width: 100%;
-  font-weight: 500;
-  text-align: center;
-  font-size: 14px;
-  line-height: initial;
+  color: black !important;
+  padding: 0 1rem !important;
+  width: 100% !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  font-size: 14px !important;
+  line-height: initial !important;
 }
 .border-top {
   border-top: 1px solid rgb(224, 224, 224);
