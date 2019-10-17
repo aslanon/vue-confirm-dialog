@@ -2,7 +2,7 @@
   <transition name="fade">
     <div v-show="isShow" class="vc-overlay" id="vueConfirm">
       <transition name="zoom">
-        <div v-if="isShow" ref="vueConfirm" class="vc-container">
+        <div v-if="isShow" ref="vueConfirm" class="vc-container"  v-on:keyup.esc="closeDialog">
           <span class="vc-text-grid">
             <h4 class="vc-title">{{title}}</h4>
             <p class="vc-text">{{message}}</p>
@@ -14,6 +14,7 @@
                 placeholder="Password"
                 type="password"
                 v-model="password"
+                v-on:keyup.13="saveChanges"
               />
             </span>
           </span>
@@ -98,6 +99,10 @@ export default {
         this._emit("setPassword", this.password);
       this._emit("save", true);
       this.password = null;
+    },
+
+    closeDialog(){
+       this._emit("close");
     }
   },
 
