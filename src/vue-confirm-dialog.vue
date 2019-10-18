@@ -2,7 +2,7 @@
   <transition name="fade">
     <div v-show="isShow" class="vc-overlay" id="vueConfirm">
       <transition name="zoom">
-        <div v-if="isShow" ref="vueConfirm" class="vc-container"  v-on:keyup.esc="closeDialog">
+        <div v-if="isShow" ref="vueConfirm" class="vc-container" v-on:keyup.esc="closeDialog">
           <span class="vc-text-grid">
             <h4 class="vc-title">{{title}}</h4>
             <p class="vc-text">{{message}}</p>
@@ -101,17 +101,19 @@ export default {
       this.password = null;
     },
 
-    closeDialog(){
-       this._emit("close");
+    closeDialog() {
+      this._emit("close");
     }
   },
 
   beforeDestroy() {
     document.removeEventListener("click", this.documentClick);
+    document.removeEventListener("touchstart", this.documentClick);
   },
 
   beforeMount() {
     document.addEventListener("click", this.documentClick);
+    document.addEventListener("touchstart", this.documentClick);
   }
 };
 </script>
@@ -223,7 +225,7 @@ export default {
   border-radius: 8px;
   height: 35px;
   border: 0;
-  margin:5px 0;
+  margin: 5px 0;
   background-color: #ebebeb;
   padding: 0 0.5rem;
   font-size: 16px;
