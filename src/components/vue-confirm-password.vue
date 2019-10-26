@@ -1,5 +1,7 @@
 <template>
   <div class="grid">
+    <h3>with password confirm</h3>
+
     <ul>
       <li v-for="(item, i) in list" :key="item.id">
         <span class="item">
@@ -13,13 +15,24 @@
 
 <script>
 export default {
-  name: "Example",
+  name: "VueConfirmPassword",
   data() {
     return {
       list: [
-        { text: "item 1", id: 1 },
-        { text: "item 2", id: 2 },
-        { text: "item 3", id: 3 }
+        {
+          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          id: 4
+        },
+        {
+          text:
+            "Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.",
+          id: 5
+        },
+        {
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.",
+          id: 6
+        }
       ]
     };
   },
@@ -67,18 +80,36 @@ export default {
   justify-content: center;
   flex-direction: column;
 }
+.grid h3 {
+  text-align: left;
+  width: 100%;
+  text-transform: capitalize;
+}
 ul {
-  border: 1px solid gray;
-  padding: 1rem 2rem;
-  width: 200px;
+  background-color: #ececec;
+  border-radius: 0rem;
+  border: 1px solid #dfdfdf;
+  padding: 0em;
+  width: 100%;
+  max-width: 720px;
+  list-style: none;
 }
 li {
   text-align: left;
-  margin: 0.5rem 0;
+  margin: 0 0;
+  padding: 1rem;
+  background: white;
+  border-bottom: 1px solid #dfdfdf;
+}
+li:hover {
+  background: #ebebeb;
 }
 .item {
   display: grid;
   grid-template-columns: 1fr 96px;
   width: 100%;
+}
+.item button {
+  height: 30px;
 }
 </style>

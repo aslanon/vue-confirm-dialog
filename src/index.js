@@ -9,6 +9,7 @@ const optionsDefaults = {
       isShow: false,
       isConfirmed: false,
       isLoading: false,
+      isNoClicked: false,
       time: 0,
       interval: null,
       password: null
@@ -38,7 +39,7 @@ const optionsDefaults = {
           : null;
       });
       await this.callback().then(resp => {
-        if (callback) callback(resp, this.state.password);
+        if (typeof callback == 'function') callback(resp, this.state.password);
       });
     },
 
@@ -52,13 +53,21 @@ const optionsDefaults = {
         this.state.interval = setInterval(() => {
           this.state.time += 1;
           if (this.state.isConfirmed) {
-            resolve(true);
             clearInterval(this.state.interval);
+            resolve(true);
+            this.resetState();
+          }
+          if (this.state.isNoClicked) {
+            clearInterval(this.state.interval);
+            resolve(false);
+            this.close();
+            this.resetState();
           }
           if (this.state.time > 120) {
             clearInterval(this.state.interval);
             resolve(false);
             this.close();
+            this.resetState();
           }
         }, 500);
       });
@@ -69,12 +78,17 @@ const optionsDefaults = {
         isConfirmed: false,
         isLoading: false,
         isShow: false,
+        isNoClicked: false,
         time: 0,
         password: null
       };
     },
 
     close() {
+      this.state.isNoClicked = true
+    },
+
+    _close() {
       clearInterval(this.state.interval);
       this.resetState();
     },
@@ -101,7 +115,7 @@ export default {
     Vue.component("vue-confirm-dialog", VueConfirmDialog);
 
     Vue.directive("focus", {
-      inserted: function(el) {
+      inserted: function (el) {
         el.focus();
       }
     });
@@ -117,7 +131,7 @@ export default {
     root.isConfirm = options.data.isConfirm;
     root.resetState = options.data.resetState;
     root.confirm = options.data.confirm;
-    root.close = options.data.close;
+    root.close = options.data._close;
     root.$on("setPassword", options.data.setPassword);
     root.$on("close", options.data.close);
     root.$on("save", options.data.updateConfirm);
