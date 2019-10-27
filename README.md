@@ -97,10 +97,11 @@ this.$vueConfirm.confirm(
     // this function will return password from dialog input. 
     function(confirm, password){
 		
-   		// This action was confirmed from user, user clicked to 'yes' button
+      // This action was confirmed from user, user clicked to 'yes' button
     	if (confirm == true) {
         // ...do some thing
         if (password == USER_PASSWORD) // ...do some thing
+
       }
             
     }
