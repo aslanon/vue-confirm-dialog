@@ -99,12 +99,11 @@ this.$vueConfirm.confirm(
 		
    		// This action was confirmed from user, user clicked to 'yes' button
     	if (confirm == true) {
-            // ...do some thing
-            if (password == USER_PASSWORD) // ...do some thing
-        }
-                  
+        // ...do some thing
+        if (password == USER_PASSWORD) // ...do some thing
+      }
             
-	}
+    }
  
 
 )
