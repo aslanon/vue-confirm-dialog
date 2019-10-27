@@ -59,7 +59,6 @@ export default {
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
                 self.list.splice(i, 1);
-                self.$vueConfirm.close();
                 break;
               }
             }

@@ -45,8 +45,7 @@ export default {
           message: `Are you sure? ${item.text} will be remove?`,
           auth: false,
           button: {
-            no: "No",
-            yes: "Yes"
+            yes: "OK"
           }
         },
         /**
@@ -58,7 +57,6 @@ export default {
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
                 self.list.splice(i, 1);
-                self.$vueConfirm.close();
                 break;
               }
             }

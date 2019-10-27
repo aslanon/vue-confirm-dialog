@@ -28,6 +28,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   max-width: 720px;
+  padding:1rem;
   margin: auto;
 }
 hr {

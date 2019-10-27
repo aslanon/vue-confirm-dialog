@@ -153,9 +153,6 @@ export default {
   font-size: 14px !important;
   line-height: initial !important;
 }
-.border-top {
-  border-top: 1px solid rgb(224, 224, 224);
-}
 .vc-overlay {
   background: rgba(0, 0, 0, 0.29);
   width: 100%;
