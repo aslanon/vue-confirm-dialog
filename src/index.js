@@ -39,7 +39,10 @@ const optionsDefaults = {
           : null;
       });
       await this.callback().then(resp => {
-        if (typeof callback == 'function') callback(resp, this.state.password);
+        if (typeof callback == 'function') {
+          callback(resp, this.state.password)
+          this.resetState();
+        };
       });
     },
 
@@ -55,19 +58,18 @@ const optionsDefaults = {
           if (this.state.isConfirmed) {
             clearInterval(this.state.interval);
             resolve(true);
-            this.resetState();
+
           }
           if (this.state.isNoClicked) {
             clearInterval(this.state.interval);
             resolve(false);
             this.close();
-            this.resetState();
           }
           if (this.state.time > 120) {
             clearInterval(this.state.interval);
             resolve(false);
             this.close();
-            this.resetState();
+
           }
         }, 500);
       });

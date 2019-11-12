@@ -55,6 +55,7 @@ export default {
          * @param {String} password
          */
         function(confirm, password) {
+          console.log(password)
           if (confirm == true) {
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
