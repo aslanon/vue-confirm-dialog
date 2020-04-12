@@ -1,11 +1,10 @@
 <template>
   <div class="grid">
     <h3>normal confirm</h3>
-
     <ul>
       <li v-for="(item, i) in list" :key="item.id">
         <span class="item">
-          {{item.text}}
+          {{ item.text }}
           <button @click.stop="showConfirm(item)">Delete</button>
         </span>
       </li>

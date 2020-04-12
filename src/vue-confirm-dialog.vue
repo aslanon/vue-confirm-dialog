@@ -2,10 +2,15 @@
   <transition name="fade">
     <div v-show="isShow" class="vc-overlay" id="vueConfirm">
       <transition name="zoom">
-        <div v-if="isShow" ref="vueConfirm" class="vc-container" v-on:keyup.esc="closeDialog">
+        <div
+          v-if="isShow"
+          ref="vueConfirm"
+          class="vc-container"
+          v-on:keyup.esc="closeDialog"
+        >
           <span class="vc-text-grid">
-            <h4 class="vc-title">{{title}}</h4>
-            <p class="vc-text">{{message}}</p>
+            <h4 v-if="title" class="vc-title">{{ title }}</h4>
+            <p v-if="message" class="vc-text">{{ message }}</p>
             <span v-if="isAuth">
               <input
                 v-focus
@@ -18,19 +23,28 @@
               />
             </span>
           </span>
-          <div class="vc-btn-grid" :class="{'isMono': !button.no || !button.yes}">
+          <div
+            class="vc-btn-grid"
+            :class="{ isMono: !button.no || !button.yes }"
+          >
             <button
               v-if="button.no"
-              :disabled="isLoading  || isConfirmLoading"
+              :disabled="isLoading || isConfirmLoading"
               @click.stop="_emit('close')"
               class="vc-btn left"
-            >{{button.no}}</button>
+            >
+              {{ button.no }}
+            </button>
             <button
               v-if="button.yes"
-              :disabled="isLoading  || isConfirmLoading || isAuth ? !password : false"
+              :disabled="
+                isLoading || isConfirmLoading || isAuth ? !password : false
+              "
               @click.stop="saveChanges()"
               class="vc-btn"
-            >{{button.yes}}</button>
+            >
+              {{ button.yes }}
+            </button>
           </div>
         </div>
       </transition>
