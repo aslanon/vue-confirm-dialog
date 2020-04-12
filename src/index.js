@@ -17,8 +17,8 @@ const optionsDefaults = {
 
     dialog: {
       auth: false,
-      title: "Confirm",
-      message: "Message",
+      title: "",
+      message: "",
       button: {
         no: "No",
         yes: "Yes"
@@ -39,10 +39,10 @@ const optionsDefaults = {
           : null;
       });
       await this.callback().then(resp => {
-        if (typeof callback == 'function') {
-          callback(resp, this.state.password)
+        if (typeof callback == "function") {
+          callback(resp, this.state.password);
           this.resetState();
-        };
+        }
       });
     },
 
@@ -58,7 +58,6 @@ const optionsDefaults = {
           if (this.state.isConfirmed) {
             clearInterval(this.state.interval);
             resolve(true);
-
           }
           if (this.state.isNoClicked) {
             clearInterval(this.state.interval);
@@ -69,7 +68,6 @@ const optionsDefaults = {
             clearInterval(this.state.interval);
             resolve(false);
             this.close();
-
           }
         }, 500);
       });
@@ -87,7 +85,7 @@ const optionsDefaults = {
     },
 
     close() {
-      this.state.isNoClicked = true
+      this.state.isNoClicked = true;
     },
 
     _close() {
@@ -117,7 +115,7 @@ export default {
     Vue.component("vue-confirm-dialog", VueConfirmDialog);
 
     Vue.directive("focus", {
-      inserted: function (el) {
+      inserted: function(el) {
         el.focus();
       }
     });
