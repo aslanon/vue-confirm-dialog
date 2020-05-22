@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import VueConfirm from './components/vue-confirm.vue'
-import VueConfirmPassword from './components/vue-confirm-password.vue'
+import VueConfirm from './examples/vue-confirm.vue'
+import VueConfirmPassword from './examples/vue-confirm-password.vue'
 
 export default {
   name: 'app',

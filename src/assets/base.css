@@ -1,0 +1,17 @@
+@import 'variables.css';
+@import 'transition.css';
+@import 'ui.css';
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
+  -webkit-touch-callout: none;
+  /* -webkit-font-smoothing: antialiased; */
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
