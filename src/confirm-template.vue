@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import VueConfirmDialog from "./vue-confirm-dialog";
+import VueConfirmDialog from './vue-confirm-dialog'
 
 export default {
   components: { VueConfirmDialog },
   computed: {
     state() {
-      return this.$root.state;
+      return this.$root.state
     },
     dialog() {
-      return this.$root.dialog;
+      return this.$root.dialog
     }
   }
-};
+}
 </script>

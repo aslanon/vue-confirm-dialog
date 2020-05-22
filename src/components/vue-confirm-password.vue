@@ -1,11 +1,10 @@
 <template>
   <div class="grid">
     <h3>with password confirm</h3>
-
     <ul>
-      <li v-for="(item, i) in list" :key="item.id">
+      <li v-for="item in list" :key="item.id">
         <span class="item">
-          {{item.text}}
+          {{ item.text }}
           <button @click.stop="showConfirm(item)">Delete</button>
         </span>
       </li>
@@ -15,60 +14,58 @@
 
 <script>
 export default {
-  name: "VueConfirmPassword",
+  name: 'VueConfirmPassword',
   data() {
     return {
       list: [
         {
-          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           id: 4
         },
         {
           text:
-            "Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.",
+            'Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.',
           id: 5
         },
         {
           text:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.",
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.',
           id: 6
         }
       ]
-    };
+    }
   },
   methods: {
     showConfirm(item) {
-      let self = this;
+      let self = this
       this.$vueConfirm.confirm(
         {
-          title: "Confirm",
+          title: 'Confirm',
           message: `Are you sure? ${item.text} will be remove?`,
           auth: true, // with password confirm
           button: {
-            no: "No",
-            yes: "Yes"
+            no: 'No',
+            yes: 'Yes'
           }
         },
         /**
          * Callback
          * @param {Boolean} confirm
-         * @param {String} password
          */
-        function(confirm, password) {
-          console.log(password)
+        function(confirm) {
           if (confirm == true) {
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
-                self.list.splice(i, 1);
-                break;
+                self.list.splice(i, 1)
+                break
               }
             }
           }
         }
-      );
+      )
     }
   }
-};
+}
 </script>
 
 <style scoped>

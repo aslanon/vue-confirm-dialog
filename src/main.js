@@ -1,9 +1,9 @@
-import Vue from "vue";
-import App from "./App.vue";
-import VueConfirmDialog from ".";
+import Vue from 'vue'
+import App from './App.vue'
+import VueConfirmDialog from '.'
 
-Vue.use(VueConfirmDialog);
+Vue.use(VueConfirmDialog)
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
-new Vue({ render: createElement => createElement(App) }).$mount("#app");
+new Vue({ render: createElement => createElement(App) }).$mount('#app')

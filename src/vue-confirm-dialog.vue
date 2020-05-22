@@ -9,8 +9,8 @@
           v-on:keyup.esc="closeDialog"
         >
           <span class="vc-text-grid">
-            <h4 v-if="title" class="vc-title">{{ title }}</h4>
-            <p v-if="message" class="vc-text">{{ message }}</p>
+            <h4 class="vc-title">{{ title }}</h4>
+            <p class="vc-text">{{ message }}</p>
             <span v-if="isAuth">
               <input
                 v-focus
@@ -54,7 +54,7 @@
 
 <script>
 export default {
-  name: "VueConfirm",
+  name: 'VueConfirm',
   props: {
     isShow: {
       type: Boolean,
@@ -70,16 +70,16 @@ export default {
     },
     title: {
       type: String,
-      default: "Confirm"
+      default: 'Confirm'
     },
     message: {
       type: String,
-      default: "Are you sure?"
+      default: 'Are you sure?'
     },
     button: {
       type: Object,
       default: function() {
-        return { no: "Cancel", yes: "Save" };
+        return { no: 'Cancel', yes: 'Save' }
       }
     }
   },
@@ -88,20 +88,20 @@ export default {
     return {
       password: null,
       isConfirmLoading: false
-    };
+    }
   },
 
   methods: {
     _emit(evt, data) {
-      this.$root.$emit(evt, data);
+      this.$root.$emit(evt, data)
     },
 
     documentClick(e) {
       try {
-        let el = this.$refs.vueConfirm;
-        let target = e.target;
+        let el = this.$refs.vueConfirm
+        let target = e.target
         if (el !== target && !el.contains(target)) {
-          this._emit("close");
+          this._emit('close')
         }
       } catch (error) {
         // console.log(error)
@@ -109,31 +109,30 @@ export default {
     },
 
     saveChanges() {
-      if (this.isAuth && this.password)
-        this._emit("setPassword", this.password);
-      this._emit("save", true);
-      this.password = null;
+      if (this.isAuth && this.password) this._emit('setPassword', this.password)
+      this._emit('save', true)
+      this.password = null
     },
 
     closeDialog() {
-      this._emit("close");
+      this._emit('close')
     }
   },
 
   beforeDestroy() {
-    document.removeEventListener("click", this.documentClick);
-    document.removeEventListener("touchstart", this.documentClick);
+    document.removeEventListener('click', this.documentClick)
+    document.removeEventListener('touchstart', this.documentClick)
   },
 
   beforeMount() {
-    document.addEventListener("click", this.documentClick);
-    document.addEventListener("touchstart", this.documentClick);
+    document.addEventListener('click', this.documentClick)
+    document.addEventListener('touchstart', this.documentClick)
   }
-};
+}
 </script>
 
 <style scoped>
-@import url("./assets/transition.css");
+@import url('./assets/transition.css');
 
 *,
 *:before,
@@ -230,7 +229,7 @@ export default {
   /* color: black; */
   border-right: 1px solid #e0e0e0;
 }
-.vc-input[type="password"] {
+.vc-input[type='password'] {
   width: 100%;
   outline: none;
   border-radius: 8px;
@@ -242,8 +241,8 @@ export default {
   font-size: 16px;
   transition: 0.21s ease;
 }
-.vc-input[type="password"]:hover,
-.vc-input[type="password"]:focus {
+.vc-input[type='password']:hover,
+.vc-input[type='password']:focus {
   background-color: #dfdfdf;
 }
 </style>

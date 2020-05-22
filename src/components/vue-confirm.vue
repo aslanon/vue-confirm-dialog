@@ -2,7 +2,7 @@
   <div class="grid">
     <h3>normal confirm</h3>
     <ul>
-      <li v-for="(item, i) in list" :key="item.id">
+      <li v-for="item in list" :key="item.id">
         <span class="item">
           {{ item.text }}
           <button @click.stop="showConfirm(item)">Delete</button>
@@ -14,37 +14,37 @@
 
 <script>
 export default {
-  name: "VueConfirm",
+  name: 'VueConfirm',
   data() {
     return {
       list: [
         {
-          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           id: 1
         },
         {
           text:
-            "Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.",
+            'Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.',
           id: 2
         },
         {
           text:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.",
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci explicabo, odio ullam totam odit tempore optio distinctio vel aliquam officia nam et ex suscipit ratione accusantium minima veniam ipsum laborum.',
           id: 3
         }
       ]
-    };
+    }
   },
   methods: {
     showConfirm(item) {
-      let self = this;
+      let self = this
       this.$vueConfirm.confirm(
         {
-          title: "Confirm",
+          title: 'Confirm',
           message: `Are you sure? ${item.text} will be remove?`,
           auth: false,
           button: {
-            yes: "OK"
+            yes: 'OK'
           }
         },
         /**
@@ -55,16 +55,16 @@ export default {
           if (confirm == true) {
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
-                self.list.splice(i, 1);
-                break;
+                self.list.splice(i, 1)
+                break
               }
             }
           }
         }
-      );
+      )
     }
   }
-};
+}
 </script>
 
 <style scoped>
