@@ -17,8 +17,8 @@ const optionsDefaults = {
 
     dialog: {
       auth: false,
-      title: 'Confirm',
-      message: 'Message',
+      title: '',
+      message: '',
       button: {
         no: 'No',
         yes: 'Yes'
