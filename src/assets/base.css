@@ -1,15 +1,3 @@
 @import 'variables.css';
 @import 'transition.css';
 @import 'ui.css';
-
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-decoration: none;
-  -webkit-touch-callout: none;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 0;
-}
