@@ -5,7 +5,7 @@
       <li v-for="item in list" :key="item.id">
         <span class="item">
           {{ item.text }}
-          <button @click.stop="showConfirm(item)">Delete</button>
+          <button @click="showConfirm(item)">Delete</button>
         </span>
       </li>
     </ul>

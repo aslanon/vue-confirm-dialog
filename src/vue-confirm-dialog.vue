@@ -3,6 +3,7 @@
     <div v-show="isShow" class="vc-overlay" id="vueConfirm">
       <transition name="zoom">
         <div
+          v-clickoutside="closeDialog"
           v-if="isShow"
           ref="vueConfirm"
           class="vc-container"
@@ -30,7 +31,7 @@
             <button
               v-if="button.no"
               :disabled="isLoading || isConfirmLoading"
-              @click.stop="_emit('close')"
+              @click="_emit('close')"
               class="vc-btn left"
             >
               {{ button.no }}
@@ -40,7 +41,7 @@
               :disabled="
                 isLoading || isConfirmLoading || isAuth ? !password : false
               "
-              @click.stop="saveChanges()"
+              @click="saveChanges()"
               class="vc-btn"
             >
               {{ button.yes }}
@@ -54,7 +55,7 @@
 
 <script>
 export default {
-  name: 'VueConfirm',
+  name: 'VueConfirmDialog',
   props: {
     isShow: {
       type: Boolean,
@@ -70,11 +71,11 @@ export default {
     },
     title: {
       type: String,
-      default: 'Confirm'
+      default: ''
     },
     message: {
       type: String,
-      default: 'Are you sure?'
+      default: ''
     },
     button: {
       type: Object,
@@ -96,18 +97,6 @@ export default {
       this.$root.$emit(evt, data)
     },
 
-    documentClick(e) {
-      try {
-        let el = this.$refs.vueConfirm
-        let target = e.target
-        if (el !== target && !el.contains(target)) {
-          this._emit('close')
-        }
-      } catch (error) {
-        // console.log(error)
-      }
-    },
-
     saveChanges() {
       if (this.isAuth && this.password) this._emit('setPassword', this.password)
       this._emit('save', true)
@@ -117,16 +106,6 @@ export default {
     closeDialog() {
       this._emit('close')
     }
-  },
-
-  beforeDestroy() {
-    document.removeEventListener('click', this.documentClick)
-    document.removeEventListener('touchstart', this.documentClick)
-  },
-
-  beforeMount() {
-    document.addEventListener('click', this.documentClick)
-    document.addEventListener('touchstart', this.documentClick)
   }
 }
 </script>
