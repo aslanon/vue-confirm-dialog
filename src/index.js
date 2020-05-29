@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import ConfirmTemplate from './confirm-template'
+import VueConfirmDialogTemplate from './vue-confirm-dialog-template'
 import VueConfirmDialog from './vue-confirm-dialog.vue'
 
 const optionsDefaults = {
@@ -20,8 +20,8 @@ const optionsDefaults = {
       title: '',
       message: '',
       button: {
-        no: 'No',
-        yes: 'Yes'
+        no: '',
+        yes: ''
       }
     },
 
@@ -36,6 +36,8 @@ const optionsDefaults = {
       Object.keys(args).forEach(item => {
         args[item] || this.dialog[item]
           ? (this.dialog[item] = args[item])
+          : typeof this.dialog[item] == 'boolean'
+          ? false
           : null
       })
       await this.callback().then(resp => {
@@ -57,17 +59,13 @@ const optionsDefaults = {
           this.state.time += 1
           if (this.state.isConfirmed) {
             clearInterval(this.state.interval)
+            this.close()
             resolve(true)
           }
-          if (this.state.isNoClicked) {
+          if (this.state.isNoClicked || this.state.time > 120) {
             clearInterval(this.state.interval)
-            resolve(false)
             this.close()
-          }
-          if (this.state.time > 120) {
-            clearInterval(this.state.interval)
             resolve(false)
-            this.close()
           }
         }, 500)
       })
@@ -122,7 +120,7 @@ export default {
 
     const root = new Vue({
       data: { state: options.data.state, dialog: options.data.dialog },
-      render: createElement => createElement(ConfirmTemplate)
+      render: createElement => createElement(VueConfirmDialogTemplate)
     })
 
     // Mount root Vue instance on new div element added to body

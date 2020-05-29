@@ -1,26 +1,25 @@
 <template>
   <transition name="fade">
-    <div v-show="isShow" class="vc-overlay" id="vueConfirm">
+    <div v-if="isShow" @click="closeDialog" class="vc-overlay" id="vueConfirm">
       <transition name="zoom">
         <div
-          v-clickoutside="closeDialog"
           v-if="isShow"
+          @keyup.esc="closeDialog"
           ref="vueConfirm"
           class="vc-container"
-          v-on:keyup.esc="closeDialog"
         >
           <span class="vc-text-grid">
-            <h4 class="vc-title">{{ title }}</h4>
-            <p class="vc-text">{{ message }}</p>
+            <h4 v-if="title" class="vc-title">{{ title }}</h4>
+            <p v-if="message" class="vc-text">{{ message }}</p>
             <span v-if="isAuth">
               <input
                 v-focus
+                v-model="password"
+                @keyup.13="saveChanges"
                 class="vc-input"
+                type="password"
                 name="vc-password"
                 placeholder="Password"
-                type="password"
-                v-model="password"
-                v-on:keyup.13="saveChanges"
               />
             </span>
           </span>
@@ -30,8 +29,8 @@
           >
             <button
               v-if="button.no"
-              :disabled="isLoading || isConfirmLoading"
               @click="_emit('close')"
+              :disabled="isLoading || isConfirmLoading"
               class="vc-btn left"
             >
               {{ button.no }}
@@ -79,9 +78,7 @@ export default {
     },
     button: {
       type: Object,
-      default: function() {
-        return { no: 'Cancel', yes: 'Save' }
-      }
+      default: () => {}
     }
   },
 
@@ -97,14 +94,15 @@ export default {
       this.$root.$emit(evt, data)
     },
 
+    closeDialog(e) {
+      if (e.target.id != 'vueConfirm') return
+      this._emit('close')
+    },
+
     saveChanges() {
       if (this.isAuth && this.password) this._emit('setPassword', this.password)
       this._emit('save', true)
       this.password = null
-    },
-
-    closeDialog() {
-      this._emit('close')
     }
   }
 }

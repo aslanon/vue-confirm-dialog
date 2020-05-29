@@ -42,7 +42,6 @@ export default {
         {
           title: 'Confirm',
           message: `Are you sure? ${item.text} will be remove?`,
-          auth: false,
           button: {
             yes: 'OK'
           }

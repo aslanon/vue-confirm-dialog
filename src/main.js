@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import clickoutside from '@/directives/clickoutside'
-
 import VueConfirmDialog from '.'
-Vue.use(VueConfirmDialog)
 
-Vue.directive('clickoutside', clickoutside)
+Vue.use(VueConfirmDialog)
 
 Vue.config.productionTip = false
 

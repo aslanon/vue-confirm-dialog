@@ -11,23 +11,23 @@
 }
 
 .vc-title {
-  color: var(--title-color) !important;
-  padding: 0 1rem !important;
-  width: 100% !important;
-  font-weight: var(--font-weight-black) !important;
-  text-align: center !important;
-  font-size: var(--font-size-m) !important;
-  line-height: initial !important;
-  margin-bottom: 5px !important;
+  color: var(--title-color);
+  padding: 0 1rem;
+  width: 100%;
+  font-weight: var(--font-weight-black);
+  text-align: center;
+  font-size: var(--font-size-m);
+  line-height: initial;
+  margin-bottom: 5px;
 }
 .vc-text {
-  color: var(--message-color) !important;
-  padding: 0 1rem !important;
-  width: 100% !important;
-  font-weight: var(--font-weight-medium) !important;
-  text-align: center !important;
-  font-size: var(--font-size-s) !important;
-  line-height: initial !important;
+  color: var(--message-color);
+  padding: 0 1rem;
+  width: 100%;
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  font-size: var(--font-size-s);
+  line-height: initial;
 }
 .vc-overlay {
   background-color: var(--overlay-background-color);
