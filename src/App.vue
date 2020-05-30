@@ -1,27 +1,31 @@
 <template>
   <div id="app">
-    <vue-confirm />
-    <hr />
-    <vue-confirm-password />
+    <vue-confirm-dialog></vue-confirm-dialog>
+    <list-confirm />
+    <list-confirm-password />
   </div>
 </template>
 
 <script>
-import VueConfirm from './examples/vue-confirm.vue'
-import VueConfirmPassword from './examples/vue-confirm-password.vue'
+import VueConfirmDialog from './vue-confirm-dialog'
+import ListConfirm from './examples/list-confirm'
+import ListConfirmPassword from './examples/list-confirm-password'
 
 export default {
   name: 'app',
   components: {
-    VueConfirm,
-    VueConfirmPassword
+    VueConfirmDialog,
+    ListConfirm,
+    ListConfirmPassword
   }
 }
 </script>
 
 <style>
+@import url('./examples/assets/base.css');
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Sans', 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -30,10 +34,8 @@ export default {
   max-width: 720px;
   padding: 1rem;
   margin: auto;
-}
-hr {
-  opacity: 0.5;
-  width: 100%;
-  display: block;
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 5rem;
 }
 </style>

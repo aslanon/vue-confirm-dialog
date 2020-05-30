@@ -1,0 +1,44 @@
+button {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  font-weight: 700;
+  font-size: 14px;
+  height: 35px !important;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+button:hover {
+  background-color: #c3c3c3;
+}
+
+h3 {
+  font-size: 32px;
+  padding-bottom: 0.5rem;
+  text-transform: capitalize;
+  text-align: left;
+  border-bottom: 0.5px solid #0000003d;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  text-align: left;
+  /* border: 1px solid; */
+  border-color: rgb(207, 207, 207);
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.13);
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+ul li p {
+  padding: 1rem;
+}
