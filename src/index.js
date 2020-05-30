@@ -80,10 +80,21 @@ const optionsDefaults = {
         time: 0,
         password: null
       }
+
+      this.dialog = {
+        auth: false,
+        title: '',
+        message: '',
+        button: {
+          no: '',
+          yes: ''
+        }
+      }
     },
 
     close() {
       this.state.isNoClicked = true
+      this.resetState()
     },
 
     _close() {

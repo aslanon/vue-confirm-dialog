@@ -52,8 +52,8 @@ export default {
          * Callback
          * @param {Boolean} confirm
          */
-        function(confirm) {
-          if (confirm == true) {
+        (confirm, password) => {
+          if (confirm == true && password) {
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
                 self.list.splice(i, 1)

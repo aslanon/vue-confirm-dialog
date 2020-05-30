@@ -50,7 +50,7 @@ export default {
          * Callback
          * @param {Boolean} confirm
          */
-        function(confirm) {
+        confirm => {
           if (confirm == true) {
             for (let i = 0; i < self.list.length; i++) {
               if (self.list[i].id == item.id) {
