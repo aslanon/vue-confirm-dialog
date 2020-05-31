@@ -102,7 +102,7 @@ export default {
         this.isShow = false
         // callback
         if (this.params.callback) {
-          this.params.callback(confirm, this.password)
+          this.params.callback(false, this.password)
         }
       }
     },
