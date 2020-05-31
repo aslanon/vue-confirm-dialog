@@ -85,7 +85,7 @@ export default {
   actions: {
     logout({ commit }) {
       Vue.$confirm({
-        title: 'Are you sure?'
+        title: 'Are you sure?',
         message: 'Are you sure you want to logout?',
         button: {
           yes: 'Yes',
