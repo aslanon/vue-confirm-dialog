@@ -2,8 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
 
-import VueConfirmDialog from '../../src/index.js'
-Vue.use(VueConfirmDialog)
+// import VueConfirmDialog from '../../src/index.js'
+// Vue.use(VueConfirmDialog)
 
 Vue.config.productionTip = false
 

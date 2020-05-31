@@ -1,22 +1,23 @@
 <template>
   <div id="app">
-    <vue-confirm-dialog></vue-confirm-dialog>
+    <div>test</div>
+    <!-- <vue-confirm-dialog></vue-confirm-dialog>
     <list-confirm />
-    <list-confirm-password />
+    <list-confirm-password /> -->
   </div>
 </template>
 
 <script>
-import VueConfirmDialog from '../../src/vue-confirm-dialog'
-import ListConfirm from './list-confirm'
-import ListConfirmPassword from './list-confirm-password'
+// import VueConfirmDialog from '../../src/vue-confirm-dialog'
+// import ListConfirm from './list-confirm'
+// import ListConfirmPassword from './list-confirm-password'
 
 export default {
   name: 'app',
   components: {
-    VueConfirmDialog,
-    ListConfirm,
-    ListConfirmPassword
+    // VueConfirmDialog,
+    // ListConfirm,
+    // ListConfirmPassword
   }
 }
 </script>
