@@ -63,6 +63,7 @@ Vue.directive('focus', {
 
 export default {
   name: 'VueConfirmDialog',
+
   data() {
     return {
       isShow: false,
@@ -129,10 +130,10 @@ export default {
     if (!document) return
     events.$on('open', this.open)
     events.$on('close', this.closeItem)
-    document.addEventListener('keyup', this.handleKeyUp)
+    // document.addEventListener('keyup', this.handleKeyUp)
   },
   beforeDestroy() {
-    document.removeEventListener('keyup', this.handleKeyUp)
+    // document.removeEventListener('keyup', this.handleKeyUp)
   }
 }
 </script>
