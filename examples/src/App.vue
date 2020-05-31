@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import VueConfirmDialog from './vue-confirm-dialog'
-import ListConfirm from './examples/list-confirm'
-import ListConfirmPassword from './examples/list-confirm-password'
+import VueConfirmDialog from '../../src/vue-confirm-dialog'
+import ListConfirm from './list-confirm'
+import ListConfirmPassword from './list-confirm-password'
 
 export default {
   name: 'app',
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style>
-@import url('./examples/assets/base.css');
+@import url('./assets/base.css');
 
 #app {
   font-family: 'Sans', 'Avenir', Helvetica, Arial, sans-serif;
