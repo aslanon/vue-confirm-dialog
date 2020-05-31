@@ -1,6 +1,16 @@
 <template>
   <div id="app">
     <vue-confirm-dialog></vue-confirm-dialog>
+    <div class="links">
+      <span class="links__item">
+        <h4>Author: Onur Aslan</h4>
+        <a href="https://github.com/aslanon"> GitHub Profile</a>
+      </span>
+      <span class="links__item">
+        <h4>Repository:</h4>
+        <a href="https://github.com/aslanon/vue-confirm-dialog"> GitHub Link</a>
+      </span>
+    </div>
     <list-confirm />
     <list-confirm-password />
   </div>
@@ -23,7 +33,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url('./assets/base.css');
 
 #app {
@@ -39,5 +49,18 @@ export default {
   display: grid;
   grid-template-rows: auto;
   grid-row-gap: 5rem;
+}
+
+.links {
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+
+  * {
+    text-align: left;
+    margin: 0 !important;
+  }
 }
 </style>
