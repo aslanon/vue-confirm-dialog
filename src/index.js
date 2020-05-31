@@ -4,11 +4,9 @@ import { events } from './events'
 export default {
   install(Vue, args = {}) {
     if (this.installed) return
-
     this.installed = true
-    this.params = args
 
-    Vue.component(args.componentName || 'vue-confirm-dialog', VueConfirmDialog)
+    Vue.component('vue-confirm-dialog', VueConfirmDialog)
 
     const confirm = params => {
       if (typeof params != 'object' || Array.isArray(params)) {

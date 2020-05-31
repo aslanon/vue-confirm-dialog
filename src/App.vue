@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <vue-confirm-dialog></vue-confirm-dialog>
+    <vue-confirm-dialog componentName="aslanon"></vue-confirm-dialog>
     <list-confirm />
     <list-confirm-password />
   </div>
