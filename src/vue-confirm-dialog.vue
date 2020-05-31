@@ -1,8 +1,13 @@
 <template>
   <transition name="fade">
-    <div v-if="isShow" class="vc-overlay" id="vueConfirm">
+    <div
+      v-if="isShow"
+      @click="handleClickOverlay"
+      class="vc-overlay"
+      id="vueConfirm"
+    >
       <transition name="zoom">
-        <div v-if="isShow" ref="vueConfirm" class="vc-container">
+        <div v-if="isShow" ref="vueConfirmDialog" class="vc-container">
           <span class="vc-text-grid">
             <h4 v-if="dialog.title" class="vc-title">{{ dialog.title }}</h4>
             <p v-if="dialog.message" class="vc-text">{{ dialog.message }}</p>
@@ -10,10 +15,12 @@
               <input
                 v-focus
                 v-model="password"
+                @keyup.13="e => handleClickButton(e, true)"
                 class="vc-input"
                 type="password"
                 name="vc-password"
                 placeholder="Password"
+                autocomplete="off"
               />
             </span>
           </span>
@@ -23,7 +30,7 @@
           >
             <button
               v-if="dialog.button.no"
-              @click.stop="e => close(e, false)"
+              @click.stop="e => handleClickButton(e, false)"
               class="vc-btn left"
             >
               {{ dialog.button.no }}
@@ -32,7 +39,7 @@
             <button
               v-if="dialog.button.yes"
               :disabled="dialog.auth ? !password : false"
-              @click.stop="e => close(e, true)"
+              @click.stop="e => handleClickButton(e, true)"
               class="vc-btn"
             >
               {{ dialog.button.yes }}
@@ -76,33 +83,56 @@ export default {
         auth: false,
         title: '',
         message: '',
-        button: {}
+        button: {},
+        callback: () => {}
       }
     },
-    close(event, confirm) {
-      if (event.target.id == 'vueConfirm') return
+    handleClickButton({ target }, confirm) {
+      if (target.id == 'vueConfirm') return
+      if (this.dialog.auth && !this.password) return
       this.isShow = false
       // callback
       if (this.params.callback) {
         this.params.callback(confirm, this.password)
       }
     },
+    handleClickOverlay({ target }) {
+      if (target.id == 'vueConfirm') {
+        this.isShow = false
+        // callback
+        if (this.params.callback) {
+          this.params.callback(confirm, this.password)
+        }
+      }
+    },
+    handleKeyUp({ keyCode }) {
+      if (keyCode == 27) {
+        this.handleClickOverlay({ target: { id: 'vueConfirm' } })
+      }
+      if (keyCode == 13) {
+        this.handleClickButton({ target: { id: '' } }, true)
+      }
+    },
     open(params) {
+      this.resetState()
       this.params = params
       this.isShow = true
-
-      Object.keys(params).forEach(item => {
-        params[item] || this.dialog[item]
-          ? (this.dialog[item] = params[item])
-          : typeof this.dialog[item] == 'boolean'
-          ? false
-          : null
+      // set params to dialog state
+      Object.entries(params).forEach(param => {
+        if (typeof param[1] == typeof this.dialog[param[0]]) {
+          this.dialog[param[0]] = param[1]
+        }
       })
     }
   },
   mounted() {
+    if (!document) return
     events.$on('open', this.open)
     events.$on('close', this.closeItem)
+    document.addEventListener('keyup', this.handleKeyUp)
+  },
+  beforeDestroy() {
+    document.removeEventListener('keyup', this.handleKeyUp)
   }
 }
 </script>

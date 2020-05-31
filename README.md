@@ -52,21 +52,21 @@ In any of functions :
 ```js
 methods: {
     handleClick(){
-      this.$vueConfirm.confirm(
+      this.$confirm(
         {
           message: `Are you sure?`,
           button: {
             no: 'No',
             yes: 'Yes'
-          }
-        },
-        /**
-        * Callback Function
-        * @param {Boolean} confirm
-        */
-        confirm => {
-          if (confirm) {
-            // ... do something
+          },
+          /**
+          * Callback Function
+          * @param {Boolean} confirm
+          */
+          callback: confirm => {
+            if (confirm) {
+              // ... do something
+            }
           }
         }
       )
@@ -74,32 +74,55 @@ methods: {
   }
 ```
 
+If you want to use in \*.js file (e.g Vuex Store) before import Vue and after use Vue.\$confirm.
+
+```js
+import Vue from 'vue'
+
+export default {
+  namespaced: true,
+  state: {},
+  actions: {
+    logout({ commit }) {
+      Vue.$confirm({
+        title: 'Are you sure?'
+        message: 'Are you sure you want to logout?',
+        button: {
+          yes: 'Yes',
+          no: 'Cancel'
+        },
+        callback: confirm => {
+          // ...do something
+        }
+      })
+    }
+  }
+}
+```
+
 ## API
 
 If you want to password confirm, "auth" key is must be true.
 
 ```js
-this.$vueConfirm.confirm(
-  {
-    auth: true,
-    message: 'foo',
-    button: {
-      yes: 'Yes',
-      no: 'Cancel'
-    }
+this.$confirm({
+  auth: true,
+  message: 'foo',
+  button: {
+    yes: 'Yes',
+    no: 'Cancel'
   },
-
   /**
    * Callback Function
    * @param {Boolean} confirm
    * @param {String} password
    */
-  (confirm, password) => {
+  callback: (confirm, password) => {
     if (confirm && password == YOUR_PASSWORD) {
       // ...do something
     }
   }
-)
+})
 ```
 
 ## Use only for information
@@ -118,13 +141,12 @@ methods: {
           button: {
           	yes: 'OK',
           }
-
         },
         /**
         * Callback Function
         * @param {Boolean} confirm
         */
-        confirm => {
+        callback: confirm => {
           if (confirm) {
             // ... do something
           }
