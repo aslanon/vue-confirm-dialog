@@ -7,21 +7,23 @@
 </template>
 
 <script>
-import VueConfirmDialog from './vue-confirm-dialog'
-import ListConfirm from './examples/list-confirm'
-import ListConfirmPassword from './examples/list-confirm-password'
+import ListConfirm from './components/list-confirm.vue'
+import ListConfirmPassword from './components/list-confirm-password.vue'
 
 export default {
   name: 'app',
   components: {
-    VueConfirmDialog,
     ListConfirm,
     ListConfirmPassword
-  }
+  },
+  data() {
+    return {}
+  },
+  methods: {}
 }
 </script>
 
-<style>
+<style scoped>
 @import url('./assets/base.css');
 
 #app {

@@ -90,7 +90,7 @@ export default {
     },
     handleClickButton({ target }, confirm) {
       if (target.id == 'vueConfirm') return
-      if (this.dialog.auth && !this.password) return
+      if (confirm && this.dialog.auth && !this.password) return
       this.isShow = false
       // callback
       if (this.params.callback) {
