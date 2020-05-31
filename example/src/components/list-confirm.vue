@@ -39,7 +39,8 @@ export default {
         title: 'Confirm',
         message: `Are you sure? ${item.text} will be remove?`,
         button: {
-          yes: 'OK'
+          yes: 'Yes',
+          no: 'Cancel'
         },
         callback: confirm => {
           if (confirm == true) {

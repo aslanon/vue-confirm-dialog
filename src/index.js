@@ -33,8 +33,9 @@ export default {
         events.$emit('open', params)
       }
     }
-
-    confirm.close = () => events.$emit('close')
+    confirm.close = () => {
+      events.$emit('close')
+    }
 
     Vue.prototype.$confirm = confirm
     Vue['$confirm'] = confirm

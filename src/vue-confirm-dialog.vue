@@ -128,7 +128,9 @@ const Component = {
   mounted() {
     if (!document) return
     events.$on('open', this.open)
-    events.$on('close', this.closeItem)
+    events.$on('close', () => {
+      this.handleClickOverlay({ target: { id: 'vueConfirm' } })
+    })
     // document.addEventListener('keyup', this.handleKeyUp)
   },
   beforeDestroy() {
