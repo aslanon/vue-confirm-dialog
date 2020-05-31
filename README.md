@@ -6,7 +6,7 @@ Simple Confirm Dialog verification plugin with Vue.js.
 
 Demo: https://aslanon.github.io/vue-confirm-dialog/
 
-![vue-confirm](https://media.giphy.com/media/IcjDD7frmVB0KaGvG4/source.gif)
+![vue-confirm](https://media.giphy.com/media/KzDUV51RkigyVBsJgA/giphy.gif)
 
 ## Install
 
@@ -23,6 +23,7 @@ import Vue from 'vue'
 import VueConfirmDialog from 'vue-confirm-dialog'
 
 Vue.use(VueConfirmDialog)
+Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 ```
 
 In App.vue (or in the template file for Nuxt.js (layout/default.vue)):
@@ -36,13 +37,8 @@ In App.vue (or in the template file for Nuxt.js (layout/default.vue)):
 </template>
 
 <script>
-  import VueConfirmDialog from 'vue-confirm-dialog'
-
   export default {
-    name: 'app',
-    components: {
-      VueConfirmDialog
-    }
+    name: 'app'
   }
 </script>
 ```
@@ -129,7 +125,7 @@ this.$confirm({
 
 If you want to use only for information and you want of see one button in dialog, you can use only one of 'no' or 'yes' button object.
 
-![vue-confirm](https://media.giphy.com/media/gFbTGQx1b0ZEDWKx73/source.gif)
+![vue-confirm](https://media.giphy.com/media/U3y0rmoC4SUySJxJqL/giphy.gif)
 
 ```js
 methods: {
