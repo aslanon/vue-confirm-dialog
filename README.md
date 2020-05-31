@@ -31,12 +31,12 @@ In App.vue (or in the template file for Nuxt.js (layout/default.vue)):
 <template>
   <div id="app">
     <vue-confirm-dialog></vue-confirm-dialog>
-    <!-- your code !-->
+    <!-- your code -->
   </div>
 </template>
 
 <script>
-  import VueConfirmDialog from './vue-confirm-dialog'
+  import VueConfirmDialog from 'vue-confirm-dialog'
 
   export default {
     name: 'app',
@@ -134,7 +134,7 @@ If you want to use only for information and you want of see one button in dialog
 ```js
 methods: {
     handleClick(){
-      this.$vueConfirm.confirm(
+      this.$confirm(
         {
           title: 'Information',
           message: 'This content has been removed',
