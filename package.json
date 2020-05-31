@@ -1,7 +1,7 @@
 {
   "name": "vue-confirm-dialog",
   "description": "simple action confirm",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Onur Aslan <aslanon.tr@gmail.com>",
   "private": false,
   "main": "dist/index.js",
