@@ -2,7 +2,7 @@ import VueConfirmDialog from './vue-confirm-dialog.vue'
 import { events } from './events'
 
 export default {
-  install(Vue, args = {}) {
+  install(Vue) {
     if (this.installed) return
     this.installed = true
 
