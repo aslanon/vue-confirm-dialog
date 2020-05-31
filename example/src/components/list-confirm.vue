@@ -1,6 +1,6 @@
 <template>
   <div class="grid">
-    <h3>⚡️ normal confirm</h3>
+    <h3>⚡️ confirm normal</h3>
     <ul>
       <li v-for="item in list" :key="item.id">
         <p>{{ item.text }}</p>

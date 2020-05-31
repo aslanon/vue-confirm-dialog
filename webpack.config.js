@@ -2,9 +2,6 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  // lintOnSave: false,
-  // publicPath: '/'
-  // // publicPath: 'vue-confirm-dialog'
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),

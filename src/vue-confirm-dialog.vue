@@ -61,9 +61,8 @@ Vue.directive('focus', {
   }
 })
 
-export default {
+const Component = {
   name: 'VueConfirmDialog',
-
   data() {
     return {
       isShow: false,
@@ -136,6 +135,8 @@ export default {
     // document.removeEventListener('keyup', this.handleKeyUp)
   }
 }
+
+export default Component
 </script>
 
 <style>
