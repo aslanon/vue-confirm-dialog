@@ -1,5 +1,5 @@
 module.exports = {
-  lintOnSave: false
-  // publicPath: '/'
+  lintOnSave: false,
+  publicPath: '/'
   // publicPath: 'vue-confirm-dialog'
 }
