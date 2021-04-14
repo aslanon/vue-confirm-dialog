@@ -9,8 +9,8 @@
       <transition name="zoom">
         <div v-if="isShow" ref="vueConfirmDialog" class="vc-container">
           <span class="vc-text-grid">
-            <h4 v-if="dialog.title" class="vc-title">{{ dialog.title }}</h4>
-            <p v-if="dialog.message" class="vc-text">{{ dialog.message }}</p>
+            <h4 v-if="dialog.title" class="vc-title" v-html="dialog.title"></h4>
+            <p v-if="dialog.message" class="vc-text" v-html="dialog.message"></p>
             <span v-if="dialog.auth">
               <input
                 v-focus
