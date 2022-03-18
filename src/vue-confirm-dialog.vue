@@ -32,6 +32,7 @@
               v-if="dialog.button.no"
               @click.stop="e => handleClickButton(e, false)"
               class="vc-btn left"
+              type="button"
             >
               {{ dialog.button.no }}
             </button>
@@ -41,6 +42,7 @@
               :disabled="dialog.auth ? !password : false"
               @click.stop="e => handleClickButton(e, true)"
               class="vc-btn"
+              type="button"
             >
               {{ dialog.button.yes }}
             </button>
