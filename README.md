@@ -52,7 +52,7 @@ methods: {
     handleClick(){
       this.$confirm(
         {
-          message: `Are you sure?`,
+          message: 'Are you sure?',
           button: {
             no: 'No',
             yes: 'Yes'
