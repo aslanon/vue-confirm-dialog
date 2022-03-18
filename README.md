@@ -153,11 +153,3 @@ methods: {
     }
   }
 ```
-
-## Style
-
-You can add own class name to vue-confirm-dialog component. and you can write your own styles for confirm dialog.
-
-```html
-<vue-confirm-dialog class="my-class"></vue-confirm-dialog>
-```
